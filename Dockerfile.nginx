@@ -1,0 +1,3 @@
+FROM nginx:1.15
+
+COPY docker/symfony.conf /etc/nginx/conf.d/
