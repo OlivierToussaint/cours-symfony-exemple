@@ -24,6 +24,9 @@
             <li class="nav-item {% if app.request.get('_route') == 'category_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('category_index') }}">Catégorie</a>
             </li>
+            <li class="nav-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('user_index') }}">Liste des Utilisateur</a>
+            </li>
             {% if app.user %}
                 <li class="nav-item {% if app.request.get('_route') == 'app_logout' %}active{% endif %}">
                     <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>

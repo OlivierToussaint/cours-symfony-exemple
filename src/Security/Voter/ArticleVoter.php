@@ -12,7 +12,7 @@ class ArticleVoter extends Voter
     public const EDIT = 'EDIT';
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, [self::EDIT])
+        return in_array($attribute, ['ARTICLE_EDIT'])
             && $subject instanceof Article;
     }
 
@@ -24,13 +24,13 @@ class ArticleVoter extends Voter
         if (!$user instanceof UserInterface) {
             return false;
         }
+
         if (!$article instanceof Article) {
             return false;
-
         }
 
         switch ($attribute) {
-            case self::EDIT :
+            case 'ARTICLE_EDIT' :
                 return  $article->getUser() === $user;
                 break;
 
