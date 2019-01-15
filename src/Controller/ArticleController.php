@@ -11,8 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 /**
  * @Route("/article")
+ * @isGranted("ROLE_ADMIN")
  */
 class ArticleController extends AbstractController
 {
@@ -27,9 +29,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     *
      * @Route("/new", name="article_new", methods={"GET","POST"})
-     * @isGranted("ROLE_USER")
      */
     public function new(Request $request): Response
     {
@@ -39,6 +39,7 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUser($this->getUser());
+            $article->setCreateAt(new \DateTime('now'));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -64,7 +65,6 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
-     * @isGranted("ROLE_USER")
      */
     public function edit(Request $request, Article $article): Response
     {

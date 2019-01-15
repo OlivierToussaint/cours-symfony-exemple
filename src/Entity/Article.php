@@ -37,6 +37,11 @@ class Article
      */
     private $User;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createAt;
+
 
 
     public function getId(): ?int
@@ -88,6 +93,18 @@ class Article
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
 
         return $this;
     }

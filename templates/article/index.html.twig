@@ -22,7 +22,11 @@
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
                 <td>{{ article.content }}</td>
-                <td>{{ article.Category.name }}</td>
+                <td>
+                    {% if article.Category.name is defined %}
+                    {{ article.Category.name }}
+                    {% endif %}
+                </td>
                 <td>{{ article.user.email }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}"  class="btn btn-secondary">show</a>

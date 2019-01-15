@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur mon blog{% endblock %}
+
+{% block body %}
+    <div class="container">
+       <h1>{{ article.title }}</h1>
+        <h3>{{ article.user.email }}, le {{ article.createAt|date('d/m/Y') }}</h3>
+        <div class="card">
+            <div class="card-body">
+                {{ article.content }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

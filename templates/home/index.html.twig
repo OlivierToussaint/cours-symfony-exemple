@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Bienvenue sur mon blog{% endblock %}
 
 {% block body %}
+    <div class="container">
+        {% for article in articles %}
+            <a href="{{ path('home_article_show', {'id' : article.id}) }}">{{ article.title }}, par {{ article.user.email }}, le {{ article.createAt|date('d/m/Y') }}</a>
+        {% endfor %}
+    </div>
 
 {% endblock %}
