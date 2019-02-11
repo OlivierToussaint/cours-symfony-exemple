@@ -57,9 +57,10 @@ class CategoryController extends AbstractController
     public function show(Category $category, ArticleRepository $articleRepository): Response
     {
         $arrayOfArticles = $articleRepository->findBy(['Category' => $category]);
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'arrayOfArticles' => $arrayOfArticles
+            'arrayOfArticles' => $arrayOfArticles,
         ]);
     }
 

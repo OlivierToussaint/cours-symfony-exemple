@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class ArticleVoter extends Voter
 {
     public const EDIT = 'EDIT';
+
     protected function supports($attribute, $subject)
     {
         return in_array($attribute, ['ARTICLE_EDIT'])
@@ -30,10 +31,9 @@ class ArticleVoter extends Voter
         }
 
         switch ($attribute) {
-            case 'ARTICLE_EDIT' :
+            case 'ARTICLE_EDIT':
                 return  $article->getUser() === $user;
                 break;
-
         }
 
         return false;

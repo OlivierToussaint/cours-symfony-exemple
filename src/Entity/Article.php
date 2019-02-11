@@ -42,7 +42,10 @@ class Article
      */
     private $createAt;
 
-
+    public function __construct()
+    {
+        $this->createAt = new \DateTime('now');
+    }
 
     public function getId(): ?int
     {
@@ -108,5 +111,4 @@ class Article
 
         return $this;
     }
-
 }

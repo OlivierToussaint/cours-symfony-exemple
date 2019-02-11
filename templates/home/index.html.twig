@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         {% for article in articles %}
-            <a href="{{ path('home_article_show', {'id' : article.id}) }}">{{ article.title }}, par {{ article.user.email }}, le {{ article.createAt|date('d/m/Y') }}</a>
+            <a href="{{ path('home_article_show', {'id' : article.id}) }}">{{ article.title }}, par {{ article.user.displayName }}, le {{ article.createAt|date('d/m/Y') }}</a>
         {% endfor %}
     </div>
 

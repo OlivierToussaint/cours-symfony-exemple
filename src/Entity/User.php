@@ -159,4 +159,13 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getDisplayName()
+    {
+        if (!empty($this->name)) {
+            return $this->name;
+        }
+
+        return $this->email;
+    }
 }
